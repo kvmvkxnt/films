@@ -1,0 +1,176 @@
+/* general styles */
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, p {
+    margin: 0;
+    padding: 0;
+}
+
+p, time {
+    font-family: 'Metrophobic', sans-serif;
+    font-weight: 100;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Bebas Neue';
+}
+
+.container {
+    max-width: 1190px;
+    width: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.films__inner {
+    padding: 70px 0;
+}
+
+/* form styles  */
+
+.films__form {
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form__input {
+    font-family: 'Metrophobic', sans-serif;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 15px 0;
+    padding-left: 15px;
+    border-radius: 40px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.form__input ~ .form__input {
+    margin-top: 10px;
+}
+
+.form__textarea {
+    margin-top: 10px;
+    resize: horizontal;
+    border: none;
+    font-family: 'Metrophobic', sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 15px 0;
+    padding-left: 15px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.form__submit {
+    margin-top: 10px;
+    border: none;
+    background-color: rgb(52, 110, 236);
+    border-radius: 15px;
+    padding: 15px 0;
+    color: white;
+    font-family: 'Bebas Neue';
+    max-width: 500px;
+    width: 100%;
+}
+
+/* films list styles */
+
+.films__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    column-gap: 30px;
+}
+
+.films__item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+    max-width: 350px;
+    align-items: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    margin-bottom: 40px;
+    border-radius: 10px;
+}
+
+.films__title {
+    margin-bottom: 10px;
+}
+
+.films__img {
+    max-width: 350px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.films__overview {
+    display: flex;
+    margin: 0 10px;
+    margin-bottom: 15px;
+    align-self: flex-start;
+}
+
+.films__overview::before {
+    display: block;
+    content: 'Overview:';
+    font-family: 'Bebas Neue';
+    line-height: 1.4;
+    margin-right: 10px;
+}
+
+.films__date {
+    align-self: flex-start;
+    margin: 0 10px;
+}
+
+.films__date::before {
+    display: inline-block;
+    content: 'Release date:';
+    font-family: 'Bebas Neue';
+    margin-right: 10px;
+}
+
+.genres__list {
+    align-self: flex-start;
+    margin: 0 10px;
+}
+
+.genres__list::before {
+    display: inline-block;
+    content: 'Genres:';
+    font-family: 'Bebas Neue';
+    margin-right: 10px;
+}
+
+.genres__item + .genres__item {
+    margin-left: 10px;
+}
