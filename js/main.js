@@ -18,7 +18,7 @@ function addFilm(_films) {
         alert('Not all info is submited');
         null;
     } else {
-        films.unshift({
+        _films.unshift({
             id: String((Math.random(4)*100000).toFixed(0)),
             title: titleValue,
             poster: imgValue,
