@@ -13,7 +13,7 @@
     <div class="films">
         <div class="container">
             <div class="films__inner">
-                <form class="films__form">
+                <form class="films__form" id="film_add_form">
                     <h1 class="form__heading">Add new film</h1>
                     <input type="text" class="form__input form__title" placeholder="Enter title...">
                     <input type="text" class="form__input form__img" placeholder="Enter poster url...">
@@ -23,6 +23,14 @@
                     <input type="submit" class="form__submit" value="Add new film">
                 </form>
 
+                <form class="films__form" id="films_search">
+                    <h1 class="form__heading">Find film</h1>
+                    <select class="form__input search__genre">
+                        <option value="All">All</option>
+                    </select>
+                    <input type="submit" class="form__submit" value="Find">
+                </form>
+
                 <ul class="films__list">
                     
                 </ul>
@@ -30,7 +38,16 @@
         </div>
     </div>
 
+    <template class="films-item-template">
+        <li class="films__item">
+            <h2 class="films__title"></h2>
+            <img src="" width="350" height="450" class="films__img">
+            <p class="films__overview"></p>
+            <time class="films__date"></time>
+            <p class="genres__list"></p>
+        </li>
+    </template>
     <script src="js/films.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.min.js"></script>
 </body>
 </html>

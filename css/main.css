@@ -6,6 +6,7 @@ html, body {
     margin: 0;
     padding: 0;
     background-color: black;
+    color: white;
 }
 
 *,
@@ -120,6 +121,7 @@ h1, h2, h3, h4 {
     flex-wrap: wrap;
     justify-content: space-evenly;
     column-gap: 30px;
+    color: black;
 }
 
 .films__item {
