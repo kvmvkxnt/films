@@ -8,7 +8,6 @@ elAddForm.addEventListener('submit', function (evt) {
     evt.preventDefault();
     addNewFilm(films);
     renderSelect(films);
-    searchFilms();
 });
 
 elSearchForm.addEventListener('submit', function(evt) {
