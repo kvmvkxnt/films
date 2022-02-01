@@ -1,26 +1,27 @@
-var list = document.querySelector('ul');
-var elAddForm = document.querySelector('#film_add_form');
-var elSearchForm = document.querySelector('#films_search');
-var elFilmTemplate = document.querySelector('.films-item-template').content;
-var optionsValues = [];
+const list = document.querySelector('ul');
+const elAddForm = document.querySelector('#film_add_form');
+const elSearchForm = document.querySelector('#films_search');
+const elFilmTemplate = document.querySelector('.films-item-template').content;
+let optionsValues = [];
 
 elAddForm.addEventListener('submit', function (evt) {
     evt.preventDefault();
     addNewFilm(films);
     renderSelect(films);
+    searchFilms();
 });
 
-elSearchForm.addEventListener('submit', function(evt) {
+elSearchForm.addEventListener('change', function(evt) {
     evt.preventDefault();
     searchFilms();
 })
 
-var searchFilms = () => {
-    var searchGenre = document.querySelector('.search__genre').value;
-    var allFilms = document.querySelectorAll('.films__item');
+const searchFilms = () => {
+    const searchGenre = document.querySelector('.search__genre').value;
+    const allFilms = document.querySelectorAll('.films__item');
 
     allFilms.forEach((elem) => {
-        var elemGenres = elem.querySelector('.genres__list').textContent.split(', ');
+        const elemGenres = elem.querySelector('.genres__list').textContent.split(', ');
         if (elemGenres.includes(searchGenre)) {
             elem.style.display = 'flex';
         } else if (searchGenre == 'All') {
@@ -31,30 +32,30 @@ var searchFilms = () => {
     });
 }
 
-var renderSelect = db => {
+const getGenres = db => {
     db.forEach((elem) => {
-        elem.genres.forEach((genre) => {
-            if (optionsValues.includes(genre)) {
-                null;
-            } else {
-                var newOpt = document.createElement('option');
-                newOpt.value = genre;
-                newOpt.textContent = genre;
-                var select = document.querySelector('.search__genre');
-                select.appendChild(newOpt);
-                var allOptions = select.options;
-                optionsValues.push(allOptions[allOptions.length-1].value);
-            }
-        })
+        let noGenres = elem.genres.filter(genre => !optionsValues.includes(genre));
+        noGenres.forEach((genre) => optionsValues.push(genre));
+    });
+}
+
+const renderSelect = () => {
+    getGenres(films);
+    optionsValues.forEach((genre) => {
+        const newOpt = document.createElement('option');
+        newOpt.value = genre;
+        newOpt.textContent = genre;
+        const select = document.querySelector('.search__genre');
+        select.appendChild(newOpt);
     })
 }
 
-var addNewFilm = db => {
-    var titleValue = document.querySelector('.form__title').value.trim();
-    var imgValue = document.querySelector('.form__img').value.trim();
-    var overviewValue = document.querySelector('.form__overview').value.trim();
-    var dateValue = document.querySelector('.form__date').value;
-    var genresValue = document.querySelector('.form__genres').value.trim();
+const addNewFilm = db => {
+    const titleValue = document.querySelector('.form__title').value.trim();
+    const imgValue = document.querySelector('.form__img').value.trim();
+    const overviewValue = document.querySelector('.form__overview').value.trim();
+    const dateValue = document.querySelector('.form__date').value;
+    const genresValue = document.querySelector('.form__genres').value.trim();
 
     if (titleValue.length <= 0 || imgValue.length <= 0 || overviewValue.length <= 0 || dateValue.length <= 0 || genresValue.length <= 0) {
         alert('Not all info is submited');
@@ -69,29 +70,29 @@ var addNewFilm = db => {
             genres: createGenresArr(genresValue),
         });
 
-        var film = document.querySelector('.films__item');
+        const film = document.querySelector('.films__item');
         film.parentElement.insertBefore(createFilm(db[0]), film);
     }
 }
 
-var createGenresArr = string => string.split(', ');
-var calcMs = date => new Date(String(date)).getTime();
-var calcDate = ms => {
-    var day = String(new Date(ms).getDate()).padStart(2, 0);
-    var month = String(new Date(ms).getMonth() + 1).padStart(2, 0);
-    var year = String(new Date(ms).getFullYear());
-    var release = [day, month, year].join('.');
+const createGenresArr = string => string.split(', ');
+const calcMs = date => new Date(String(date)).getTime();
+const calcDate = ms => {
+    const day = String(new Date(ms).getDate()).padStart(2, 0);
+    const month = String(new Date(ms).getMonth() + 1).padStart(2, 0);
+    const year = String(new Date(ms).getFullYear());
+    const release = [day, month, year].join('.');
 
     return release;
 };
 
-var createFilm = film => {
-    var itemTemplate = elFilmTemplate.cloneNode(true);
-    var itemTitle = itemTemplate.querySelector('.films__title');
-    var itemPoster = itemTemplate.querySelector('.films__img');
-    var itemOverview = itemTemplate.querySelector('.films__overview');
-    var itemDate = itemTemplate.querySelector('.films__date');
-    var itemGenres = itemTemplate.querySelector('.genres__list');
+const createFilm = film => {
+    const itemTemplate = elFilmTemplate.cloneNode(true);
+    const itemTitle = itemTemplate.querySelector('.films__title');
+    const itemPoster = itemTemplate.querySelector('.films__img');
+    const itemOverview = itemTemplate.querySelector('.films__overview');
+    const itemDate = itemTemplate.querySelector('.films__date');
+    const itemGenres = itemTemplate.querySelector('.genres__list');
 
     itemTitle.textContent = film.title;
     itemPoster.src = film.poster;
@@ -102,7 +103,7 @@ var createFilm = film => {
     return itemTemplate;
 }
 
-var renderList = db => {
+const renderList = db => {
     db.forEach((item) => {
         list.appendChild(createFilm(item));
     });
