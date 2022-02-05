@@ -204,3 +204,21 @@ option:last-child {
 .genres__item + .genres__item {
     margin-left: 10px;
 }
+
+.films__filter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.films__filter__img {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 10px;
+}
+
+.form__filter {
+    max-width: 448px;
+    width: 100%;
+}
